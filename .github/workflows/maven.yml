@@ -29,3 +29,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file test/pom.xml
+    - name: Upload JAR
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-jar
+        path: test/target/*.jar
+
