@@ -45,7 +45,7 @@ jobs:
         echo "TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
     - name: Build Docker image
-      run: docker build -t play9555/${IMAGE_NAME}:${TAG} -t play9555/${IMAGE_NAME}:latest .
+      run: docker build -f test/Dockerfile -t play9555/${IMAGE_NAME}:${TAG} -t play9555/${IMAGE_NAME}:latest .
 
     - name: Push Docker image
       run: |
