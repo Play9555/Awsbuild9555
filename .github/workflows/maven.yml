@@ -39,7 +39,15 @@ jobs:
       with:
           username: gajulapavanhruthik33@gmail.com
           password: Veera@123
+    - name: Set image name and tag
+      run: |
+        echo "IMAGE_NAME=$(echo ${GITHUB_REPOSITORY##*/} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+        echo "TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
     - name: Build Docker image
-      run: docker build -t YOUR_DOCKERHUB_USERNAME/YOUR_IMAGE_NAME:latest .
+      run: docker build -t play9555/${IMAGE_NAME}:${TAG} -t play9555/${IMAGE_NAME}:latest .
+
     - name: Push Docker image
-      run: docker push YOUR_DOCKERHUB_USERNAME/YOUR_IMAGE_NAME:latest
+      run: |
+        docker push play9555/${IMAGE_NAME}:${TAG}
+        docker push play9555/${IMAGE_NAME}:latest
