@@ -39,3 +39,7 @@ jobs:
       with:
           username: gajulapavanhruthik33@gmail.com
           password: Veera@123
+    - name: Build Docker image
+      run: docker build -t YOUR_DOCKERHUB_USERNAME/YOUR_IMAGE_NAME:latest .
+    - name: Push Docker image
+      run: docker push YOUR_DOCKERHUB_USERNAME/YOUR_IMAGE_NAME:latest
